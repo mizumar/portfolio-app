@@ -1,0 +1,48 @@
+[
+  {
+    "id": "smart-card-select",
+    "title": "スマートクレカ比較",
+    "summary": "クレジットカードの還元率や特徴を比較し、自分に合ったカードを探せるWebアプリ。",
+    "thumbnail": "",
+    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand"],
+    "period": "2026年〜",
+    "links": {
+      "site": "https://smart-card-select.vercel.app/",
+      "github": "https://github.com/mizumar/smart-card-select"
+    },
+    "highlights": [
+      "複数のカードを選択して比較する機能",
+      "質問への回答からカードを提案する診断機能",
+      "JSONによるカードデータ管理",
+      "記事ページのSEO対策"
+    ],
+    "hasDetail": true
+  },
+  {
+    "id": "hotel-search",
+    "title": "ホテル検索アプリ",
+    "summary": "楽天トラベルのAPIを利用し、キーワードや条件からホテルを検索できるWebアプリ。",
+    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Zustand",
+      "楽天トラベルAPI"
+    ],
+    "period": "2026年〜",
+    "links": {
+      "site": "https://hotel-comparison-app.vercel.app/",
+      "github": "https://github.com/mizumar/hotel-comparison-app"
+    },
+    "highlights": [
+      "外部APIを利用したホテル検索",
+      "TanStack Queryによるデータ取得とキャッシュ管理",
+      "検索条件に応じたAPIリクエスト",
+      "ホテル詳細ページへの機能拡張"
+    ],
+    "hasDetail": true
+  }
+]
