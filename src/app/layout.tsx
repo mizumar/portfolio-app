@@ -4,6 +4,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "作品一覧",
   description: "制作した作品を紹介するポートフォリオです。",
+  robots: {
+    index: false, // 検索結果に表示させない
+    follow: false, // ページ内のリンクを辿らせない（必要に応じて設定）
+  },
 };
 
 export default function RootLayout({
