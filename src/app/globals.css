@@ -135,7 +135,7 @@
 
 html:has(.about-page) {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
 }
 
 .about-hero,
