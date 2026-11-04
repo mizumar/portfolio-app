@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { UserRound, BriefcaseBusiness, CodeXml, Layers, X } from "lucide-react";
 
 // ナビゲーション
@@ -211,6 +210,25 @@ function ExperienceItem({
 export default function AboutPage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+
+  // 指定したセクションまでスクロール
+  const scrollToSection = (id: string) => {
+    const target = document.getElementById(id);
+
+    if (!target) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    target.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start",
+    });
+
+    setMenuOpen(false);
+  };
 
   // スクロール位置に応じて右下のメニューを表示
   useEffect(() => {
@@ -249,20 +267,51 @@ export default function AboutPage() {
     };
   }, []);
 
+  // 現在表示しているセクションを監視
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0,
+      },
+    );
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section.id);
+
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="about-page">
       {/* ファーストビュー */}
       <section className="about-hero">
         <div className="quadrant-grid">
           {sections.map((section) => (
-            <Link
+            <button
               key={section.id}
-              href={`#${section.id}`}
+              type="button"
               className="quadrant-link"
+              onClick={() => scrollToSection(section.id)}
             >
               <span className="quadrant-number">{section.number}</span>
+
               <span className="quadrant-label">{section.label}</span>
-            </Link>
+            </button>
           ))}
         </div>
 
@@ -351,6 +400,25 @@ export default function AboutPage() {
         </section>
       </div>
 
+      {/* セクションインジケーター */}
+      <nav
+        className={`section-indicator ${isScrolled ? "is-visible" : ""}`}
+        aria-label="セクションナビゲーション"
+      >
+        {sections.map((section) => (
+          <button
+            key={section.id}
+            type="button"
+            className={`section-dot ${
+              activeSection === section.id ? "is-active" : ""
+            }`}
+            aria-label={`${section.number} ${section.label}`}
+            aria-current={activeSection === section.id ? "location" : undefined}
+            onClick={() => scrollToSection(section.id)}
+          />
+        ))}
+      </nav>
+
       {/* スクロール後の右下固定アイコン */}
       <div className={`floating-navigation ${isScrolled ? "is-visible" : ""}`}>
         {menuOpen && (
@@ -370,16 +438,28 @@ export default function AboutPage() {
             const Icon = section.icon;
 
             return (
-              <Link
+              <div
                 key={section.id}
-                href={`#${section.id}`}
-                className="menu-item"
-                tabIndex={menuOpen ? 0 : -1}
-                onClick={() => setMenuOpen(false)}
+                className={`icon-menu ${menuOpen ? "is-open" : ""}`}
+                aria-hidden={!menuOpen}
               >
-                <Icon size={22} />
-                <span>{section.number}</span>
-              </Link>
+                {sections.map((section) => {
+                  const Icon = section.icon;
+
+                  return (
+                    <button
+                      key={section.id}
+                      type="button"
+                      className="menu-item"
+                      tabIndex={menuOpen ? 0 : -1}
+                      onClick={() => scrollToSection(section.id)}
+                    >
+                      <Icon size={22} />
+                      <span>{section.number}</span>
+                    </button>
+                  );
+                })}
+              </div>
             );
           })}
         </div>

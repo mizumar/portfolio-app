@@ -135,7 +135,7 @@
 
 html:has(.about-page) {
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
 }
 
 .about-page {
@@ -162,6 +162,8 @@ html:has(.about-page) {
   overflow: hidden;
   background: var(--about-bg);
   scroll-snap-align: start;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .quadrant-grid {
@@ -255,6 +257,8 @@ html:has(.about-page) {
   border-top: 1px solid rgba(216, 195, 165, 0.2);
   scroll-snap-align: start;
   scroll-margin-top: 16px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .section-number {
@@ -458,4 +462,85 @@ html:has(.about-page) {
   .about-page *::after {
     transition-duration: 0.01ms !important;
   }
+}
+
+/* セクションインジケーター */
+
+.section-indicator {
+  position: fixed;
+  z-index: 40;
+  top: 50%;
+  right: max(20px, env(safe-area-inset-right));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(12px, -50%);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.section-indicator.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(0, -50%);
+}
+
+.section-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+
+  background: #806b59;
+  cursor: pointer;
+
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    background 0.3s ease;
+}
+
+.section-dot.is-active {
+  width: 8px;
+  height: 24px;
+  background: var(--about-accent);
+}
+
+/* スマートフォン */
+
+@media (max-width: 640px) {
+  .section-indicator {
+    right: max(12px, env(safe-area-inset-right));
+    gap: 12px;
+  }
+
+  .section-dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .section-dot.is-active {
+    width: 7px;
+    height: 20px;
+  }
+}
+
+.quadrant-link,
+.menu-item {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menu-item {
+  text-align: center;
 }
