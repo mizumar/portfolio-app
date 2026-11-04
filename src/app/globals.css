@@ -128,3 +128,334 @@
     @apply font-sans;
   }
 }
+
+/* ========================================
+   About Page
+======================================== */
+
+html:has(.about-page) {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+.about-page {
+  --about-bg: #29231f;
+  --about-panel: #46372f;
+  --about-panel-hover: #594438;
+  --about-accent: #d8c3a5;
+  --about-text: #f3e9d9;
+
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  background: var(--about-bg);
+  color: var(--about-text);
+}
+
+/* ファーストビュー */
+
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--about-bg);
+  scroll-snap-align: start;
+}
+
+.quadrant-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(216, 195, 165, 0.2);
+}
+
+.quadrant-link {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(16px, 5vw, 64px);
+  overflow: hidden;
+  background: var(--about-panel);
+  color: var(--about-text);
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.quadrant-link:hover {
+  background: var(--about-panel-hover);
+}
+
+.quadrant-number {
+  color: var(--about-accent);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.quadrant-label {
+  margin-top: 8px;
+  font-size: clamp(16px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* 中央アイコン */
+
+.center-icon {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  width: clamp(76px, 12vw, 150px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 4px solid var(--about-accent);
+  border-radius: 50%;
+  background: var(--about-accent);
+  transform: translate(-50%, -50%);
+}
+
+.center-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  color: var(--about-accent);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+}
+
+/* コンテンツ */
+
+.about-content {
+  position: relative;
+  z-index: 1;
+  background: var(--about-bg);
+}
+
+.about-section {
+  min-height: 100svh;
+  padding: clamp(80px, 12vw, 160px) clamp(24px, 10vw, 160px);
+  border-top: 1px solid rgba(216, 195, 165, 0.2);
+  scroll-snap-align: start;
+  scroll-margin-top: 16px;
+}
+
+.section-number {
+  color: var(--about-accent);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+.about-section h2 {
+  margin-top: 20px;
+  font-size: clamp(40px, 7vw, 76px);
+  font-weight: 500;
+}
+
+.about-section p {
+  max-width: 680px;
+  margin-top: 32px;
+  color: #c9bdb0;
+  line-height: 2;
+}
+
+/* 右下固定アイコン */
+
+.floating-navigation {
+  position: fixed;
+  z-index: 50;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  width: 64px;
+  height: 64px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.floating-navigation.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-icon {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  overflow: hidden;
+  border: 3px solid var(--about-accent);
+  border-radius: 50%;
+  background: var(--about-accent);
+  color: var(--about-bg);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.floating-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* メニュー展開時の背景 */
+
+.menu-backdrop {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+/* 4つのメニュー */
+
+.icon-menu {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  bottom: 76px;
+  display: grid;
+  grid-template-columns: repeat(2, 64px);
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(0.9);
+  transform-origin: bottom right;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.icon-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--about-accent);
+  color: var(--about-bg);
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item span {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* スマートフォン */
+
+@media (max-width: 640px) {
+  .about-hero {
+    height: 100svh;
+    min-height: 0;
+  }
+
+  .quadrant-link {
+    padding: clamp(12px, 4vw, 20px);
+  }
+
+  .quadrant-label {
+    font-size: clamp(14px, 4vw, 22px);
+  }
+
+  .center-icon {
+    width: clamp(72px, 22vw, 96px);
+    border-width: 3px;
+  }
+
+  .scroll-indicator {
+    font-size: 9px;
+  }
+
+  .about-section {
+    min-height: 85svh;
+    padding: 90px 24px;
+  }
+
+  .floating-navigation {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 58px;
+    height: 58px;
+  }
+
+  .floating-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .icon-menu {
+    bottom: 68px;
+    grid-template-columns: repeat(2, 58px);
+    gap: 10px;
+  }
+
+  .menu-item {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* キーボード操作 */
+
+.quadrant-link:focus-visible,
+.floating-icon:focus-visible,
+.menu-item:focus-visible {
+  outline: 3px solid var(--about-text);
+  outline-offset: 4px;
+}
+
+/* モーション軽減 */
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.about-page) {
+    scroll-behavior: auto;
+  }
+
+  .about-page *,
+  .about-page *::before,
+  .about-page *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
