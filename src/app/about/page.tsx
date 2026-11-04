@@ -147,7 +147,7 @@ function CareerItem({ item }: { item: (typeof careerHistory)[number] }) {
   return (
     <article className="relative pb-12 pl-8 last:pb-0 md:pl-12">
       {/* タイムラインのポイント */}
-      <span className="absolute -left-\[7px\] top-1.5 h-3 w-3 rounded-full border-2 border-[#d8c3a5] bg-[#29231f]" />
+      <span className="absolute -left-1.75 top-1.5 h-3 w-3 rounded-full border-2 border-[#d8c3a5] bg-[#29231f]" />
 
       {/* 年月 */}
       <p className="text-sm tracking-wider text-[#d8c3a5]">{item.period}</p>
