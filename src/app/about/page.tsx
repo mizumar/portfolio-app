@@ -9,12 +9,11 @@ import {
 import { Badge } from "@/src/components/ui/badge";
 
 const profile = {
-  name: "名前",
-  role: "Webアプリケーションを個人開発",
-  location: "", // 公開しないなら空欄、または項目ごと削除
   introduction: [
-    "業務システムの開発を経験した後、Webアプリケーションの個人開発に取り組んでいます。",
-    "現在は、使いやすさと保守性を意識した画面設計に関心があります。",
+    "東北電子専門学校 システムエンジニア科を2018年3月に卒業。",
+    "同年4月から約4年半、鉄道関連の業務システム開発・保守に携わりました。客先常駐の環境で、担当者と協働しながら、COBOLを用いた既存システムの改修や、内部設計からテストまでの工程を経験しました。",
+    "2025年1月には、Excel VBAを用いて医療機関向けの受付管理・集計ツールを開発。実際の業務で継続利用されています。",
+    "2026年からはWebアプリケーションの個人開発に取り組み、Next.js、React、TypeScriptなどを使用したアプリケーションの設計・実装を行っています。",
   ],
 };
 
@@ -34,12 +33,52 @@ const skillGroups = [
   },
   {
     title: "データ取得・管理",
-    skills: ["REST API", "TanStack Query", "JSON"],
+    skills: ["REST API", "TanStack Query", "JSON", "CSV"],
   },
   {
-    title: "開発・運用",
-    skills: ["Git", "GitHub", "Vercel", "SEO"],
+    title: "テスト・開発運用",
+    skills: ["Jest", "Playwright", "Git", "GitHub", "GitHub Actions", "Vercel"],
   },
+  {
+    title: "その他の技術・経験",
+    skills: ["Excel VBA", "COBOL", "JCL", "SEO"],
+  },
+];
+
+const developmentExperiences = [
+  {
+    title: "Web Application Development",
+    description:
+      "Next.js、React、TypeScriptを使用したWebアプリケーションの個人開発。ページ構成やReactコンポーネントの実装、画面表示の調整などに取り組んでいます。",
+  },
+  {
+    title: "API Integration",
+    description:
+      "外部REST APIとの連携や、Next.js Route Handlerを利用したAPI処理の実装。サービス層とAPIリクエスト処理を分けた構成で開発しています。",
+  },
+  {
+    title: "Testing",
+    description:
+      "JestやPlaywrightを使用したテストの実装。画面表示やユーザー操作に加え、入力値の検証、異常系、境界値なども確認しています。",
+  },
+  {
+    title: "Development Workflow",
+    description:
+      "GitHub IssuesやPull Requestを利用したタスク管理・変更管理。GitHub Actionsによるテストの自動実行も取り入れています。",
+  },
+  {
+    title: "Business Tool Development",
+    description:
+      "Excel VBAを使用した医療機関向け受付管理・集計ツールの開発。受付情報の管理、CSVによるデータ保存、履歴検索、月次集計など、実際の業務フローに合わせた機能を実装しました。",
+  },
+];
+
+const developmentPrinciples = [
+  "役割ごとにコンポーネントや処理を分離し、保守しやすい構成にする",
+  "APIから取得したデータの流れや状態管理を理解して実装する",
+  "実際に使う人の視点でUIや操作性を考える",
+  "AIを活用しながら実装やテストを進め、処理内容を確認する",
+  "IssueやPull Requestを活用し、テスト結果を確認しながら開発する",
 ];
 
 export default function AboutPage() {
@@ -69,7 +108,7 @@ export default function AboutPage() {
         <section className="mb-10">
           <h2 className="mb-4 text-xl font-semibold">プロフィール</h2>
           <Card>
-            <CardContent>
+            <CardContent className="space-y-4 pt-6">
               {profile.introduction.map((paragraph) => (
                 <p key={paragraph} className="leading-7 text-muted-foreground">
                   {paragraph}
@@ -89,16 +128,38 @@ export default function AboutPage() {
                 <p className="text-sm text-muted-foreground">
                   2018年4月〜2022年10月
                 </p>
-                <CardTitle className="text-lg">業務システム開発</CardTitle>
+                <CardTitle className="text-lg">
+                  鉄道関連業務システムの開発・保守
+                </CardTitle>
               </CardHeader>
 
               <CardContent>
                 <p className="leading-7 text-muted-foreground">
-                  鉄道関連の業務システムに携わり、
-                  COBOLを使用したシステム開発を経験。
-                  業務システムの開発・保守を通じて、
-                  既存システムの構造や業務要件を踏まえた
-                  開発の基礎を学びました。
+                  鉄道関連の業務システムにおいて、COBOLを用いた既存プログラムの改修を担当。
+                  係員操作型端末とメインフレーム間の通信中継機能や、
+                  座席・運賃などに関わる在庫管理機能の改修に携わりました。
+                  内部設計、設計書の作成・レビュー対応、プログラム修正、
+                  テスト仕様書の作成からテスト実施までを経験しました。
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <p className="text-sm text-muted-foreground">2025年1月</p>
+                <CardTitle className="text-lg">
+                  医療機関向け受付管理・集計ツールの開発
+                </CardTitle>
+              </CardHeader>
+
+              <CardContent>
+                <p className="leading-7 text-muted-foreground">
+                  Excel VBAを使用し、紙で管理されていた受付業務を
+                  Excel上で扱えるツールを開発しました。
+                  患者情報の登録、受付記録、CSVバックアップ、
+                  履歴検索、月次集計などの機能を実装。
+                  実際の事務スタッフ約5名が利用しており、
+                  初期バージョンが約2年間継続して使用されています。
                 </p>
               </CardContent>
             </Card>
@@ -148,6 +209,29 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* 開発経験 */}
+        <section className="mb-10">
+          <h2 className="mb-4 text-xl font-semibold">Development Experience</h2>
+
+          <div className="space-y-4">
+            {developmentExperiences.map((experience) => (
+              <Card key={experience.title}>
+                <CardHeader>
+                  <CardTitle className="text-base">
+                    {experience.title}
+                  </CardTitle>
+                </CardHeader>
+
+                <CardContent>
+                  <p className="leading-7 text-muted-foreground">
+                    {experience.description}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
         {/* 開発方針 */}
         <section>
           <h2 className="mb-4 text-xl font-semibold">開発で意識していること</h2>
@@ -155,10 +239,9 @@ export default function AboutPage() {
           <Card>
             <CardContent className="pt-6">
               <ul className="list-disc space-y-2 pl-5 leading-7 text-muted-foreground">
-                <li>役割ごとにコンポーネントや処理を分離する</li>
-                <li>APIから取得したデータを適切に扱う</li>
-                <li>実際に使う人の視点でUIや操作性を考える</li>
-                <li>実装した機能の仕組みを理解しながら開発する</li>
+                {developmentPrinciples.map((principle) => (
+                  <li key={principle}>{principle}</li>
+                ))}
               </ul>
             </CardContent>
           </Card>
