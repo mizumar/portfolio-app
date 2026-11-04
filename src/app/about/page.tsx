@@ -3,6 +3,15 @@
 import { useEffect, useState } from "react";
 import { UserRound, BriefcaseBusiness, CodeXml, Layers, X } from "lucide-react";
 
+import {
+  CodeIcon,
+  PlugsConnectedIcon,
+  FlaskIcon,
+  GitBranchIcon,
+  BriefcaseIcon,
+  CheckCircleIcon,
+} from "@phosphor-icons/react";
+
 // ナビゲーション
 const sections = [
   { id: "profile", number: "01", label: "Profile", icon: UserRound },
@@ -76,26 +85,31 @@ const skillGroups = [
 const developmentExperiences = [
   {
     title: "Web Application Development",
+    icon: CodeIcon,
     description:
       "Next.js、React、TypeScriptを使用したWebアプリケーションの個人開発。ページ構成やReactコンポーネントの実装、画面表示の調整などに取り組んでいます。",
   },
   {
     title: "API Integration",
+    icon: PlugsConnectedIcon,
     description:
       "外部REST APIとの連携や、Next.js Route Handlerを利用したAPI処理の実装。サービス層とAPIリクエスト処理を分けた構成で開発しています。",
   },
   {
     title: "Testing",
+    icon: FlaskIcon,
     description:
       "JestやPlaywrightを使用したテストの実装。画面表示やユーザー操作に加え、入力値の検証、異常系、境界値なども確認しています。",
   },
   {
     title: "Development Workflow",
+    icon: GitBranchIcon,
     description:
       "GitHub IssuesやPull Requestを利用したタスク管理・変更管理。GitHub Actionsによるテストの自動実行も取り入れています。",
   },
   {
     title: "Business Tool Development",
+    icon: BriefcaseIcon,
     description:
       "Excel VBAを使用した医療機関向け受付管理・集計ツールの開発。受付情報の管理、CSVによるデータ保存、履歴検索、月次集計など、実際の業務フローに合わせた機能を実装しました。",
   },
@@ -129,32 +143,24 @@ function SectionHeading({
 }
 
 // Careerの項目
-function CareerItem({
-  item,
-  index,
-}: {
-  item: (typeof careerHistory)[number];
-  index: number;
-}) {
+function CareerItem({ item }: { item: (typeof careerHistory)[number] }) {
   return (
-    <article className="grid gap-4 border-t border-[#665448] py-8 md:grid-cols-[120px_1fr] md:gap-10">
-      <div>
-        <span className="text-3xl font-light text-[#d8c3a5]">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <p className="mt-2 text-xs tracking-wide text-[#b9a58e]">
-          {item.period}
-        </p>
-      </div>
+    <article className="relative pb-12 pl-8 last:pb-0 md:pl-12">
+      {/* タイムラインのポイント */}
+      <span className="absolute -left-\[7px\] top-1.5 h-3 w-3 rounded-full border-2 border-[#d8c3a5] bg-[#29231f]" />
 
-      <div>
-        <h3 className="text-lg font-medium leading-relaxed text-[#f3e9d9] md:text-xl">
-          {item.title}
-        </h3>
-        <p className="mt-4 text-sm leading-8 text-[#d0c2b0]">
-          {item.description}
-        </p>
-      </div>
+      {/* 年月 */}
+      <p className="text-sm tracking-wider text-[#d8c3a5]">{item.period}</p>
+
+      {/* タイトル */}
+      <h3 className="mt-3 text-lg font-medium leading-relaxed text-[#f3e9d9] md:text-xl">
+        {item.title}
+      </h3>
+
+      {/* 説明 */}
+      <p className="mt-4 text-sm leading-8 text-[#d0c2b0]">
+        {item.description}
+      </p>
     </article>
   );
 }
@@ -162,16 +168,16 @@ function CareerItem({
 // Skillsの項目
 function SkillGroup({ group }: { group: (typeof skillGroups)[number] }) {
   return (
-    <div className="border-t border-[#665448] py-6">
+    <div className="group border border-[#665448] bg-[#46372f] p-5 transition-colors duration-300 hover:bg-[#594438] md:p-7">
       <h3 className="text-sm font-medium tracking-wider text-[#d8c3a5]">
         {group.title}
       </h3>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-5 flex flex-wrap gap-2">
         {group.skills.map((skill) => (
           <span
             key={skill}
-            className="border border-[#806b59] px-3 py-2 text-xs tracking-wide text-[#f3e9d9] transition-colors hover:bg-[#46372f] md:text-sm"
+            className="border border-[#806b59] px-3 py-2 text-xs tracking-wide text-[#f3e9d9] transition-colors group-hover:border-[#a58c73] md:text-sm"
           >
             {skill}
           </span>
@@ -184,24 +190,27 @@ function SkillGroup({ group }: { group: (typeof skillGroups)[number] }) {
 // Experienceの項目
 function ExperienceItem({
   item,
-  index,
 }: {
   item: (typeof developmentExperiences)[number];
-  index: number;
 }) {
-  return (
-    <article className="grid gap-3 border-t border-[#665448] py-7 md:grid-cols-[64px_1fr] md:gap-8">
-      <span className="text-2xl font-light text-[#d8c3a5]">
-        {String(index + 1).padStart(2, "0")}
-      </span>
+  const Icon = item.icon;
 
-      <div>
-        <h3 className="text-base font-medium tracking-wide text-[#f3e9d9] md:text-lg">
-          {item.title}
-        </h3>
-        <p className="mt-3 text-sm leading-8 text-[#d0c2b0]">
-          {item.description}
-        </p>
+  return (
+    <article className="group border border-[#665448] bg-[#46372f] p-6 transition-colors duration-300 hover:bg-[#594438] md:p-7">
+      <div className="flex items-start gap-5">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center bg-[#594438] text-[#d8c3a5] transition-colors duration-300 group-hover:bg-[#6b5241]">
+          <Icon size={32} weight="light" />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <h3 className="text-base font-medium tracking-wide text-[#f3e9d9] md:text-lg">
+            {item.title}
+          </h3>
+
+          <p className="mt-4 text-sm leading-8 text-[#d0c2b0]">
+            {item.description}
+          </p>
+        </div>
       </div>
     </article>
   );
@@ -341,9 +350,9 @@ export default function AboutPage() {
         <section id="career" className="about-section">
           <SectionHeading number="02 / CAREER">Career</SectionHeading>
 
-          <div className="max-w-4xl">
-            {careerHistory.map((item, index) => (
-              <CareerItem key={item.title} item={item} index={index} />
+          <div className="max-w-4xl border-l border-[#665448]">
+            {careerHistory.map((item) => (
+              <CareerItem key={item.title} item={item} />
             ))}
           </div>
         </section>
@@ -351,12 +360,11 @@ export default function AboutPage() {
         {/* 03 Skills */}
         <section id="skills" className="about-section">
           <SectionHeading number="03 / SKILLS">Skills</SectionHeading>
-
-          <div className="max-w-4xl">
+          <div className="grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-2">
             {skillGroups.map((group) => (
               <SkillGroup key={group.title} group={group} />
             ))}
-          </div>
+          </div>{" "}
         </section>
 
         {/* 04 Experience */}
@@ -365,31 +373,29 @@ export default function AboutPage() {
             Development Experience
           </SectionHeading>
 
-          <div className="max-w-4xl">
-            {developmentExperiences.map((experience, index) => (
-              <ExperienceItem
-                key={experience.title}
-                item={experience}
-                index={index}
-              />
+          <div className="grid max-w-4xl grid-cols-1 gap-4 md:grid-cols-2">
+            {developmentExperiences.map((experience) => (
+              <ExperienceItem key={experience.title} item={experience} />
             ))}
           </div>
 
-          <div className="mt-16 max-w-4xl">
-            <h3 className="mb-6 text-xl font-light tracking-wide text-[#f3e9d9]">
+          <div className="mt-20 max-w-4xl">
+            <h3 className="mb-8 text-xl font-light tracking-wide text-[#f3e9d9]">
               開発で意識していること
             </h3>
 
-            <ul className="space-y-4 border-t border-[#665448] pt-6">
-              {developmentPrinciples.map((principle, index) => (
-                <li
-                  key={principle}
-                  className="flex gap-4 text-sm leading-7 text-[#d0c2b0]"
-                >
-                  <span className="shrink-0 text-[#d8c3a5]">
-                    {String(index + 1).padStart(2, "0")}
+            <ul className="grid grid-cols-1 gap-5 border-t border-[#665448] pt-8 md:grid-cols-2">
+              {developmentPrinciples.map((principle) => (
+                <li key={principle} className="flex items-start gap-4">
+                  <CheckCircleIcon
+                    size={22}
+                    weight="light"
+                    className="mt-1 shrink-0 text-[#d8c3a5]"
+                  />
+
+                  <span className="text-sm leading-7 text-[#d0c2b0]">
+                    {principle}
                   </span>
-                  <span>{principle}</span>
                 </li>
               ))}
             </ul>
