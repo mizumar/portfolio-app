@@ -135,7 +135,12 @@
 
 html:has(.about-page) {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
+}
+
+.about-hero,
+.about-section {
+  scroll-snap-align: start;
 }
 
 .about-page {
@@ -161,8 +166,6 @@ html:has(.about-page) {
   min-height: 480px;
   overflow: hidden;
   background: var(--about-bg);
-  scroll-snap-align: start;
-  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
@@ -257,7 +260,6 @@ html:has(.about-page) {
   border-top: 1px solid rgba(216, 195, 165, 0.2);
   scroll-snap-align: start;
   scroll-margin-top: 16px;
-  scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
@@ -543,4 +545,8 @@ html:has(.about-page) {
 
 .menu-item {
   text-align: center;
+}
+
+#experience {
+  scroll-snap-align: end;
 }

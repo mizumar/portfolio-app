@@ -215,16 +215,17 @@ export default function AboutPage() {
   // 指定したセクションまでスクロール
   const scrollToSection = (id: string) => {
     const target = document.getElementById(id);
-
     if (!target) return;
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    target.scrollIntoView({
+    const top = target.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top,
       behavior: prefersReducedMotion ? "auto" : "smooth",
-      block: "start",
     });
 
     setMenuOpen(false);
