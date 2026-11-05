@@ -134,8 +134,10 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-12">
-      <span className="text-xs tracking-[0.2em] text-[#d8c3a5]">{number}</span>
-      <h2 className="mt-3 text-3xl font-light tracking-wide text-[#f3e9d9] md:text-4xl">
+      <span className="text-xs font-dm tracking-[0.2em] text-[#d8c3a5]">
+        {number}
+      </span>
+      <h2 className="mt-3 font-cormorant text-3xl font-light tracking-wide text-[#f3e9d9] md:text-4xl">
         {children}
       </h2>
     </div>
@@ -203,7 +205,7 @@ function ExperienceItem({
         </div>
 
         <div className="min-w-0 flex-1">
-          <h3 className="text-base font-medium tracking-wide text-[#f3e9d9] md:text-lg">
+          <h3 className="text-base font-dm font-medium tracking-wide text-[#f3e9d9] md:text-lg">
             {item.title}
           </h3>
 
@@ -314,9 +316,11 @@ export default function AboutPage() {
               className="quadrant-link"
               onClick={() => scrollToSection(section.id)}
             >
-              <span className="quadrant-number">{section.number}</span>
+              <span className="quadrant-number font-dm">{section.number}</span>
 
-              <span className="quadrant-label">{section.label}</span>
+              <span className="quadrant-label font-cormorant">
+                {section.label}
+              </span>
             </button>
           ))}
         </div>

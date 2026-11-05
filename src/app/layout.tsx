@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "作品一覧",
@@ -10,6 +11,16 @@ export const metadata: Metadata = {
   },
 };
 
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -17,7 +28,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja" className="h-full antialiased">
-      <body className="flex min-h-full flex-col">{children}</body>
+      {/* <body className="flex min-h-full flex-col">{children}</body> */}
+      <body className={`${dmSans.variable} ${cormorant.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
