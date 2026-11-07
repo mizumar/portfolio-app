@@ -97,24 +97,6 @@ export default function HomePage() {
                 Profile
               </h2>
 
-              <div className="grid gap-16 md:grid-cols-2 pt-10">
-                <CoffeeCup
-                  type="hot"
-                  image="/images/profile.png"
-                  title="HOTEL SEARCH"
-                  cupColor="#594438"
-                  accentColor="#d0c2b0"
-                />
-                <CoffeeCup
-                  type="hot"
-                  image="/images/profile.png"
-                  title="SMART CARD SELECT"
-                  paperColor="#c9b08d"
-                  cupColor="#46372f"
-                  accentColor="#d8c3a5"
-                />{" "}
-              </div>
-
               <p className="mt-6 max-w-2xl text-sm leading-8 text-[#d0c2b0]">
                 これまでの経験や、現在取り組んでいるWebアプリケーション開発、
                 使用している技術などをまとめています。
