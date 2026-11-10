@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
+import { Header } from "@/src/components/layout/header";
 
 export const metadata: Metadata = {
   title: "作品一覧",
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="ja" className="h-full antialiased">
       {/* <body className="flex min-h-full flex-col">{children}</body> */}
       <body className={`${dmSans.variable} ${cormorant.variable}`}>
+        <Header />
         {children}
       </body>
     </html>
