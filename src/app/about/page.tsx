@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { UserRound, BriefcaseBusiness, CodeXml, Layers, X } from "lucide-react";
 import { Breadcrumbs } from "@/src/components/navigation/breadcrumbs";
+import Link from "next/link";
 
 import {
   CodeIcon,
@@ -411,6 +412,15 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
+          </div>
+          {/* 一覧へ戻る */}
+          <div className="mt-16 border-t border-[#665448] pt-6">
+            <Link
+              href="/"
+              className="font-dm text-xs tracking-wide text-[#b9a58e] transition-colors hover:text-[#d8c3a5]"
+            >
+              ← Topへ戻る
+            </Link>
           </div>
         </section>
       </div>

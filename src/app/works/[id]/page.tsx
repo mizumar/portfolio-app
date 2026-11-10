@@ -133,7 +133,7 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
                       size: "lg",
                       variant: "outline",
                       className:
-                        "!border-[#665448] !bg-[#594438] !text-[#d8c3a5] shadow-none hover:!border-[#806b59] hover:!bg-[#3b2d25] hover:!text-[#f3e9d9]",
+                        "border-[#665448]! bg-[#594438]! text-[#d8c3a5]! shadow-none hover:border-[#806b59]! hover:bg-[#3b2d25]! hover:text-[#f3e9d9]!",
                     })}
                   >
                     公開サイトを見る
