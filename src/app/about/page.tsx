@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { UserRound, BriefcaseBusiness, CodeXml, Layers, X } from "lucide-react";
+import { Breadcrumbs } from "@/src/components/navigation/breadcrumbs";
 
 import {
   CodeIcon,
@@ -305,7 +306,14 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <main className="about-page">
+    <main className="about-page relative">
+      {/* ぱんくずリスト */}
+      <div className="absolute left-6 top-24 z-20 sm:left-10 lg:left-16">
+        <Breadcrumbs
+          items={[{ label: "Top", href: "/" }, { label: "About" }]}
+        />
+      </div>
+
       {/* ファーストビュー */}
       <section className="about-hero">
         <div className="quadrant-grid">

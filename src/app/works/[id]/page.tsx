@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { Suspense } from "react";
 
+import { Breadcrumbs } from "@/src/components/navigation/breadcrumbs";
 import worksData from "@/src/data/works.json";
 import type { Work } from "@/src/types/work";
 
@@ -66,20 +67,37 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
   const content = work.hasDetail ? await getWorkContent(work.id) : null;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-      {/* 作品タイトルと概要 */}
-      <header className="mt-8">
-        <p className="text-sm text-muted-foreground">WORK DETAIL</p>
+    <div className="mx-auto max-w-4xl px-6 py-24 sm:px-10 lg:px-16">
+      {/* パンくず */}
+      <Breadcrumbs
+        items={[
+          { label: "Top", href: "/" },
+          { label: "Works", href: "/#works" },
+          { label: work.title },
+        ]}
+      />
 
-        <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+      {/* 作品タイトル */}
+      <header className="mt-10">
+        <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
+          WORK DETAIL
+        </p>
+
+        <h1 className="mt-4 text-3xl font-light tracking-wide text-[#f3e9d9] sm:text-5xl">
           {work.title}
         </h1>
 
-        <p className="mt-5 leading-7 text-muted-foreground">{work.summary}</p>
+        <p className="mt-6 max-w-3xl text-sm leading-8 text-[#d0c2b0] sm:text-base">
+          {work.summary}
+        </p>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2">
           {work.tech.map((tech) => (
-            <Badge key={tech} variant="secondary">
+            <Badge
+              key={tech}
+              variant="outline"
+              className="border-[#806b59] bg-transparent font-normal text-[#d8c3a5]"
+            >
               {tech}
             </Badge>
           ))}
@@ -87,77 +105,130 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
       </header>
 
       {/* 開発概要 */}
-      <section className="mt-10">
-        <Card>
+      <section className="mt-16">
+        <Card className="border-[#665448] bg-[#46372f] shadow-none">
           <CardHeader>
-            <CardTitle>開発概要</CardTitle>
+            <CardTitle className="text-lg font-medium tracking-wide text-[#f3e9d9]">
+              開発概要
+            </CardTitle>
           </CardHeader>
 
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-6">
             <div>
-              <p className="text-sm text-muted-foreground">開発期間</p>
-              <p className="mt-1">{work.period}</p>
+              <p className="font-dm text-xs tracking-[0.2em] text-[#806b59]">
+                PERIOD
+              </p>
+
+              <p className="mt-2 text-sm text-[#d0c2b0]">{work.period}</p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              {work.links.site && (
-                <Link
-                  href={work.links.site}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({ className: "w-full" })}
-                >
-                  公開サイトを見る
-                </Link>
-              )}
+            {(work.links.site || work.links.github) && (
+              <div className="flex flex-col gap-3 sm:flex-row">
+                {work.links.site && (
+                  <Link
+                    href={work.links.site}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonVariants({
+                      size: "lg",
+                      variant: "outline",
+                      className:
+                        "!border-[#665448] !bg-[#594438] !text-[#d8c3a5] shadow-none hover:!border-[#806b59] hover:!bg-[#3b2d25] hover:!text-[#f3e9d9]",
+                    })}
+                  >
+                    公開サイトを見る
+                  </Link>
+                )}
 
-              {work.links.github && (
-                <Link
-                  href={work.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={buttonVariants({ className: "w-full" })}
-                >
-                  GitHubを見る
-                </Link>
-              )}
-            </div>
+                {work.links.github && (
+                  <Link
+                    href={work.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonVariants({
+                      variant: "outline",
+                      size: "lg",
+                      className:
+                        "border-[#665448]! bg-[#594438]! text-[#d8c3a5]! shadow-none hover:border-[#806b59]! hover:bg-[#3b2d25]! hover:text-[#f3e9d9]!",
+                    })}
+                  >
+                    GitHubを見る
+                  </Link>
+                )}
+              </div>
+            )}
           </CardContent>
         </Card>
       </section>
 
       {/* 主な実装・工夫した点 */}
-      <section className="mt-10">
-        <h2 className="text-xl font-semibold">主な実装・工夫した点</h2>
+      <section className="mt-16">
+        <div className="mb-8">
+          <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
+            HIGHLIGHTS
+          </p>
 
-        <ul className="mt-4 space-y-3">
+          <h2 className="mt-3 text-2xl font-light tracking-wide text-[#f3e9d9] sm:text-3xl">
+            主な実装・工夫した点
+          </h2>
+        </div>
+
+        <ul className="space-y-4">
           {work.highlights.map((highlight) => (
-            <li key={highlight} className="flex gap-3 leading-7">
+            <li
+              key={highlight}
+              className="flex gap-4 border-b border-[#665448] pb-4 text-sm leading-8 text-[#d0c2b0]"
+            >
               <span
                 aria-hidden="true"
-                className="mt-2 h-2 w-2 shrink-0 rounded-full bg-primary"
+                className="mt-[0.8rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#d8c3a5]"
               />
+
               <span>{highlight}</span>
             </li>
           ))}
         </ul>
       </section>
 
-      {/* Markdown の詳細説明 */}
+      {/* Markdown 詳細説明 */}
       {content && (
-        <section className="mt-10 border-t pt-8">
-          <article className="prose prose-neutral max-w-none dark:prose-invert">
+        <section className="mt-16 border-t border-[#665448] pt-12">
+          <article className="prose prose-invert max-w-none">
             <ReactMarkdown
               components={{
                 h2: ({ children }) => (
-                  <h2 className="mt-8 mb-4 border-l-4 border-slate-900 pl-3 text-lg font-bold text-slate-900">
+                  <h2 className="mt-12 border-l-2 border-[#d8c3a5] pl-4 text-xl font-medium tracking-wide text-[#f3e9d9] first:mt-0">
                     {children}
                   </h2>
                 ),
+
                 h3: ({ children }) => (
-                  <h3 className="mt-6 mb-3 border-b border-slate-200 pb-2 text-base font-bold text-slate-800">
+                  <h3 className="mt-8 border-b border-[#665448] pb-2 text-base font-medium text-[#f3e9d9]">
                     {children}
                   </h3>
+                ),
+
+                p: ({ children }) => (
+                  <p className="leading-8 text-[#d0c2b0]">{children}</p>
+                ),
+
+                li: ({ children }) => (
+                  <li className="leading-8 text-[#d0c2b0]">{children}</li>
+                ),
+
+                strong: ({ children }) => (
+                  <strong className="font-medium text-[#f3e9d9]">
+                    {children}
+                  </strong>
+                ),
+
+                a: ({ href, children }) => (
+                  <a
+                    href={href}
+                    className="text-[#d8c3a5] underline decoration-[#806b59] underline-offset-4 transition-colors hover:text-[#f3e9d9]"
+                  >
+                    {children}
+                  </a>
                 ),
               }}
             >
@@ -167,12 +238,13 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
         </section>
       )}
 
-      <div className="mt-12 border-t pt-6">
+      {/* 一覧へ戻る */}
+      <div className="mt-16 border-t border-[#665448] pt-6">
         <Link
-          href="/"
-          className="text-sm font-medium underline underline-offset-4"
+          href="/#works"
+          className="font-dm text-xs tracking-wide text-[#b9a58e] transition-colors hover:text-[#d8c3a5]"
         >
-          ← 作品一覧へ戻る
+          ← Worksへ戻る
         </Link>
       </div>
     </div>
@@ -181,19 +253,16 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
 
 export default function WorkDetailPage({ params }: WorkDetailPageProps) {
   return (
-    <main className="min-h-screen bg-background">
-      <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <Link
-          href="/"
-          className="text-sm text-muted-foreground hover:text-foreground"
-        >
-          ← 作品一覧へ戻る
-        </Link>
-
-        <Suspense fallback={<p className="mt-8">作品情報を読み込み中...</p>}>
-          <WorkDetailContent params={params} />
-        </Suspense>
-      </div>
+    <main className="min-h-screen bg-[#29231f]">
+      <Suspense
+        fallback={
+          <div className="mx-auto max-w-4xl px-6 py-24 sm:px-10 lg:px-16">
+            <p className="text-sm text-[#806b59]">作品情報を読み込み中...</p>
+          </div>
+        }
+      >
+        <WorkDetailContent params={params} />
+      </Suspense>
     </main>
   );
 }
