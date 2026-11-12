@@ -2,19 +2,50 @@
   {
     "id": "smart-card-select",
     "title": "スマートクレカ比較",
-    "summary": "クレジットカードの還元率や特徴を比較し、自分に合ったカードを探せるWebアプリ。",
-    "thumbnail": "",
-    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand"],
-    "period": "2026年〜",
+    "summary": "クレジットカードを条件から比較し、自分に合ったカードを探せるWebアプリケーション。",
+    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+    "images": [
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "alt": "スマートクレカ比較のトップ画面",
+        "label": "01",
+        "title": "トップ画面"
+      },
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "alt": "スマートクレカ比較の診断画面",
+        "label": "02",
+        "title": "カード診断"
+      },
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "03",
+        "title": "比較結果"
+      },
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "04",
+        "title": "比較結果"
+      },
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "05",
+        "title": "比較結果"
+      }
+    ],
+    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    "period": "2026年",
     "links": {
       "site": "https://smart-card-select.vercel.app/",
       "github": "https://github.com/mizumar/smart-card-select"
     },
     "highlights": [
-      "複数のカードを選択して比較する機能",
-      "質問への回答からカードを提案する診断機能",
-      "JSONによるカードデータ管理",
-      "記事ページのSEO対策"
+      "2枚のクレジットカードを選択して比較できる機能",
+      "利用条件を考慮したカード診断機能",
+      "カード情報をJSONで管理し、比較ロジックと画面表示を分離"
     ],
     "hasDetail": true
   },
@@ -23,6 +54,32 @@
     "title": "ホテル検索アプリ",
     "summary": "楽天トラベルのAPIを利用し、キーワードや条件からホテルを検索できるWebアプリ。",
     "thumbnail": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+    "images": [
+      {
+        "src": "/images/works/smart-card-select/home.png",
+        "alt": "スマートクレカ比較のトップ画面",
+        "label": "01",
+        "title": "トップ画面"
+      },
+      {
+        "src": "/images/works/smart-card-select/diagnosis.png",
+        "alt": "スマートクレカ比較の診断画面",
+        "label": "02",
+        "title": "カード診断"
+      },
+      {
+        "src": "/images/works/smart-card-select/result.png",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "03",
+        "title": "比較結果"
+      },
+      {
+        "src": "/images/works/smart-card-select/result.png",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "05",
+        "title": "比較結果"
+      }
+    ],
     "tech": [
       "Next.js",
       "React",

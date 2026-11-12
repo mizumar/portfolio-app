@@ -8,6 +8,7 @@ import { Suspense } from "react";
 import { Breadcrumbs } from "@/src/components/navigation/breadcrumbs";
 import worksData from "@/src/data/works.json";
 import type { Work } from "@/src/types/work";
+import { WorkGallery } from "@/src/components/works/work-gallery";
 
 import { Badge } from "@/src/components/ui/badge";
 import { buttonVariants } from "@/src/components/ui/button";
@@ -77,13 +78,15 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
         ]}
       />
 
-      {/* 作品タイトル */}
+      {/* ========================================
+          作品タイトル
+      ======================================== */}
       <header className="mt-10">
         <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
           WORK DETAIL
         </p>
 
-        <h1 className="mt-4 text-3xl font-light tracking-wide text-[#f3e9d9] sm:text-5xl">
+        <h1 className="mt-4 text-3xl font-light tracking-wide text-[#f3e9e9] sm:text-5xl">
           {work.title}
         </h1>
 
@@ -103,12 +106,21 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
           ))}
         </div>
       </header>
+      <section className="mt-16">
+        <div>
+          {work.images && work.images.length > 0 && (
+            <WorkGallery images={work.images} />
+          )}
+        </div>
+      </section>
 
-      {/* 開発概要 */}
+      {/* ========================================
+          開発概要
+      ======================================== */}
       <section className="mt-16">
         <Card className="border-[#665448] bg-[#46372f] shadow-none">
           <CardHeader>
-            <CardTitle className="text-lg font-medium tracking-wide text-[#f3e9d9]">
+            <CardTitle className="text-lg font-medium tracking-wide text-[#f3e9e9]">
               開発概要
             </CardTitle>
           </CardHeader>
@@ -123,7 +135,7 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
             </div>
 
             {(work.links.site || work.links.github) && (
-              <div className="flex flex-col gap-3 sm:flex-row">
+              <div className="flex flex-col gap-3 border-t border-[#665448] pt-6 sm:flex-row">
                 {work.links.site && (
                   <Link
                     href={work.links.site}
@@ -133,7 +145,7 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
                       size: "lg",
                       variant: "outline",
                       className:
-                        "border-[#665448]! bg-[#594438]! text-[#d8c3a5]! shadow-none hover:border-[#806b59]! hover:bg-[#3b2d25]! hover:text-[#f3e9d9]!",
+                        "border-[#665448]! bg-[#594438]! text-[#d8c3a5]! shadow-none hover:border-[#806b59]! hover:bg-[#3b2d25]! hover:text-[#f3e9e9]!",
                     })}
                   >
                     公開サイトを見る
@@ -149,7 +161,7 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
                       variant: "outline",
                       size: "lg",
                       className:
-                        "border-[#665448]! bg-[#594438]! text-[#d8c3a5]! shadow-none hover:border-[#806b59]! hover:bg-[#3b2d25]! hover:text-[#f3e9d9]!",
+                        "border-[#665448]! bg-[#594438]! text-[#d8c3a5]! shadow-none hover:border-[#806b59]! hover:bg-[#3b2d25]! hover:text-[#f3e9e9]!",
                     })}
                   >
                     GitHubを見る
@@ -161,14 +173,17 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
         </Card>
       </section>
 
-      {/* 主な実装・工夫した点 */}
+      {/* ========================================
+          主な実装・工夫した点
+          → React側で「見せる」情報
+      ======================================== */}
       <section className="mt-16">
         <div className="mb-8">
           <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
             HIGHLIGHTS
           </p>
 
-          <h2 className="mt-3 text-2xl font-light tracking-wide text-[#f3e9d9] sm:text-3xl">
+          <h2 className="mt-3 text-2xl font-light tracking-wide text-[#f3e9e9] sm:text-3xl">
             主な実装・工夫した点
           </h2>
         </div>
@@ -190,34 +205,64 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
         </ul>
       </section>
 
-      {/* Markdown 詳細説明 */}
+      {/* ========================================
+          開発について
+          → ここからMarkdown
+          → 「読む」ための領域
+      ======================================== */}
       {content && (
-        <section className="mt-16 border-t border-[#665448] pt-12">
-          <article className="prose prose-invert max-w-none">
+        <section className="mt-20 border-t border-[#665448] pt-14">
+          <div className="mb-10">
+            <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
+              DEVELOPMENT STORY
+            </p>
+
+            <h2 className="mt-3 text-2xl font-light tracking-wide text-[#f3e9e9] sm:text-3xl">
+              開発について
+            </h2>
+
+            <p className="mt-4 max-w-2xl text-sm leading-8 text-[#806b59]">
+              開発の背景や考えたこと、実装までの過程についてまとめています。
+            </p>
+          </div>
+
+          <article className="max-w-3xl">
             <ReactMarkdown
               components={{
                 h2: ({ children }) => (
-                  <h2 className="mt-12 border-l-2 border-[#d8c3a5] pl-4 text-xl font-medium tracking-wide text-[#f3e9d9] first:mt-0">
+                  <h2 className="mt-14 border-l-2 border-[#d8c3a5] pl-4 text-xl font-medium tracking-wide text-[#f3e9e9] first:mt-0">
                     {children}
                   </h2>
                 ),
 
                 h3: ({ children }) => (
-                  <h3 className="mt-8 border-b border-[#665448] pb-2 text-base font-medium text-[#f3e9d9]">
+                  <h3 className="mt-10 text-base font-medium tracking-wide text-[#f3e9e9]">
                     {children}
                   </h3>
                 ),
 
                 p: ({ children }) => (
-                  <p className="leading-8 text-[#d0c2b0]">{children}</p>
+                  <p className="mt-5 leading-8 text-[#d0c2b0]">{children}</p>
+                ),
+
+                ul: ({ children }) => (
+                  <ul className="mt-5 space-y-2 pl-5 text-sm leading-8 text-[#d0c2b0]">
+                    {children}
+                  </ul>
+                ),
+
+                ol: ({ children }) => (
+                  <ol className="mt-5 space-y-2 pl-5 text-sm leading-8 text-[#d0c2b0]">
+                    {children}
+                  </ol>
                 ),
 
                 li: ({ children }) => (
-                  <li className="leading-8 text-[#d0c2b0]">{children}</li>
+                  <li className="pl-1 text-[#d0c2b0]">{children}</li>
                 ),
 
                 strong: ({ children }) => (
-                  <strong className="font-medium text-[#f3e9d9]">
+                  <strong className="font-medium text-[#f3e9e9]">
                     {children}
                   </strong>
                 ),
@@ -225,10 +270,24 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
                 a: ({ href, children }) => (
                   <a
                     href={href}
-                    className="text-[#d8c3a5] underline decoration-[#806b59] underline-offset-4 transition-colors hover:text-[#f3e9d9]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#d8c3a5] underline decoration-[#806b59] underline-offset-4 transition-colors hover:text-[#f3e9e9]"
                   >
                     {children}
                   </a>
+                ),
+
+                blockquote: ({ children }) => (
+                  <blockquote className="mt-6 border-l border-[#806b59] pl-5 text-sm leading-8 text-[#b9a58e]">
+                    {children}
+                  </blockquote>
+                ),
+
+                code: ({ children }) => (
+                  <code className="rounded bg-[#46372f] px-1.5 py-0.5 text-xs text-[#d8c3a5]">
+                    {children}
+                  </code>
                 ),
               }}
             >
@@ -238,7 +297,9 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
         </section>
       )}
 
-      {/* 一覧へ戻る */}
+      {/* ========================================
+          一覧へ戻る
+      ======================================== */}
       <div className="mt-16 border-t border-[#665448] pt-6">
         <Link
           href="/#works"
