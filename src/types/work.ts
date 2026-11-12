@@ -11,8 +11,16 @@ export type Work = {
   summary: string;
   thumbnail: string;
   images?: WorkImage[];
+
   tech: string[];
   period: string;
+
+  overview?: {
+    developmentType?: string;
+    role?: string;
+    features?: string[];
+  };
+
   links: {
     site?: string;
     github?: string;
