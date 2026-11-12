@@ -81,7 +81,7 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
       {/* ========================================
           作品タイトル
       ======================================== */}
-      <header className="mt-8 sm:mt-10">
+      <header className="mt-8 sm:mt-12">
         <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
           WORK DETAIL
         </p>
@@ -96,7 +96,7 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
           → PC / タブレット横では2カラム
           → スマホでは縦並び
       ======================================== */}
-      <section className="mt-8 sm:mt-12 lg:mt-14">
+      <section className="mt-4 sm:mt-12 lg:mt-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
           {/* 左：ギャラリー */}
           <div>
