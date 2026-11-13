@@ -12,12 +12,8 @@ export default function HomePage() {
       <section className="border-b border-[#665448]">
         <div className="mx-auto flex min-h-[72vh] max-w-6xl items-center px-6 py-20 sm:px-10 lg:px-16">
           <div>
-            {/* <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
-              PORTFOLIO
-            </p> */}
-
             <h1 className="mt-6 font-cormorant text-6xl font-light leading-[0.95] tracking-tight text-[#f3e9d9] sm:text-7xl lg:text-9xl">
-              Web Application
+              Web App
               <br />
               Development
             </h1>
