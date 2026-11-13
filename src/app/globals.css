@@ -561,3 +561,11 @@ html:has(.about-page) {
 .font-cormorant {
   font-family: var(--font-cormorant);
 }
+
+footer {
+  padding-bottom: 8rem;
+}
+
+.about-page {
+  padding-bottom: 8rem;
+}
