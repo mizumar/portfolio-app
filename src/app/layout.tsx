@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { DM_Sans, Cormorant_Garamond } from "next/font/google";
 import { Header } from "@/src/components/layout/header";
+import { Footer } from "@/src/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "作品一覧",
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${dmSans.variable} ${cormorant.variable}`}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

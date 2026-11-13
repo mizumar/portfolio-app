@@ -97,26 +97,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-[#665448]">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-7 font-dm text-xs text-[#806b59] sm:flex-row sm:items-center sm:justify-between lg:px-16">
-          <p className="tracking-[0.15em]">PORTFOLIO</p>
-
-          <nav className="flex gap-6">
-            <Link href="/" className="transition-colors hover:text-[#d8c3a5]">
-              Home
-            </Link>
-
-            <Link
-              href="/about"
-              className="transition-colors hover:text-[#d8c3a5]"
-            >
-              About
-            </Link>
-          </nav>
-        </div>
-      </footer>
     </main>
   );
 }

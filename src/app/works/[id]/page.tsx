@@ -375,18 +375,6 @@ async function WorkDetailContent({ params }: WorkDetailPageProps) {
           </article>
         </section>
       )}
-
-      {/* ========================================
-          一覧へ戻る
-      ======================================== */}
-      <div className="mt-16 border-t border-[#665448] pt-6">
-        <Link
-          href="/#works"
-          className="font-dm text-xs tracking-wide text-[#b9a58e] transition-colors hover:text-[#d8c3a5]"
-        >
-          ← Worksへ戻る
-        </Link>
-      </div>
     </div>
   );
 }

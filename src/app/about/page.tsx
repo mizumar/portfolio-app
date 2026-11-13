@@ -413,15 +413,6 @@ export default function AboutPage() {
               ))}
             </ul>
           </div>
-          {/* 一覧へ戻る */}
-          <div className="mt-16 border-t border-[#665448] pt-6">
-            <Link
-              href="/"
-              className="font-dm text-xs tracking-wide text-[#b9a58e] transition-colors hover:text-[#d8c3a5]"
-            >
-              ← Topへ戻る
-            </Link>
-          </div>
         </section>
       </div>
 
