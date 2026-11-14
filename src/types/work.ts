@@ -3,6 +3,7 @@ export type WorkImage = {
   alt: string;
   label: string;
   title: string;
+  device?: "desktop" | "mobile";
 };
 
 export type Work = {

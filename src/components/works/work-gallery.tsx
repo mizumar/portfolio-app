@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 
 import type { WorkImage } from "@/src/types/work";
+import { Card } from "@/src/components/ui/card";
 
 type WorkGalleryProps = {
   images: WorkImage[];
 };
 
+/** 作品画像を切り替えて表示するギャラリー */
 export function WorkGallery({ images }: WorkGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -17,21 +19,38 @@ export function WorkGallery({ images }: WorkGalleryProps) {
   }
 
   const activeImage = images[activeIndex];
+  const isMobile = activeImage.device === "mobile";
 
   return (
-    <div className="mt-14">
+    <div>
       {/* メイン画像 */}
-      <div className="overflow-hidden border border-[#665448] bg-[#46372f]">
-        <div className="relative aspect-video bg-[#29231f]">
-          <Image
-            src={activeImage.src}
-            alt={activeImage.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 1024px"
-            className="object-cover"
-          />
+      {isMobile ? (
+        <div className="flex justify-center">
+          <Card className="w-full max-w-90 overflow-hidden rounded-[2rem] border-[#665448] bg-[#46372f] p-2 shadow-none">
+            <div className="relative aspect-9/19 overflow-hidden rounded-[1.5rem] bg-[#29231f]">
+              <Image
+                src={activeImage.src}
+                alt={activeImage.alt}
+                fill
+                sizes="(max-width: 640px) 85vw, 360px"
+                className="object-cover"
+              />
+            </div>
+          </Card>
         </div>
-      </div>
+      ) : (
+        <div className="overflow-hidden border border-[#665448] bg-[#46372f]">
+          <div className="relative aspect-video bg-[#29231f]">
+            <Image
+              src={activeImage.src}
+              alt={activeImage.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+            />
+          </div>
+        </div>
+      )}
 
       {/* キャプション */}
       <div className="mt-4 flex items-baseline justify-between">
@@ -56,7 +75,6 @@ export function WorkGallery({ images }: WorkGalleryProps) {
 
             return (
               <button
-                // key={image.src}
                 key={`${image.src}-${index}`}
                 type="button"
                 onClick={() => setActiveIndex(index)}

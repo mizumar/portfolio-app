@@ -3,40 +3,59 @@
     "id": "smart-card-select",
     "title": "スマートクレカ比較",
     "summary": "クレジットカードを条件から比較し、自分に合ったカードを探せるWebアプリケーション。",
-    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/batch_Layer%203.webp",
     "images": [
       {
-        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9788.png?updatedAt=1794677157803",
         "alt": "スマートクレカ比較のトップ画面",
         "label": "01",
-        "title": "トップ画面"
+        "title": "トップ画面",
+        "device": "mobile"
       },
       {
-        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9790.png?updatedAt=1794677157476",
         "alt": "スマートクレカ比較の診断画面",
         "label": "02",
-        "title": "カード診断"
+        "title": "カード診断",
+        "device": "mobile"
       },
       {
-        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
-        "alt": "スマートクレカ比較の比較結果画面",
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9791.png?updatedAt=1794677157247",
+        "alt": "スマートクレカ比較の診断結果画面",
         "label": "03",
-        "title": "比較結果"
+        "title": "カード診断結果",
+        "device": "mobile"
       },
       {
-        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9792.png?updatedAt=1794677157441",
         "alt": "スマートクレカ比較の比較結果画面",
         "label": "04",
-        "title": "比較結果"
+        "title": "比較結果",
+        "device": "mobile"
       },
       {
-        "src": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
-        "alt": "スマートクレカ比較の比較結果画面",
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9793.png?updatedAt=1794677157370",
+        "alt": "スマートクレカ比較のお気に入りフィルター機能",
         "label": "05",
-        "title": "比較結果"
+        "title": "お気に入りフィルター",
+        "device": "mobile"
+      },
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9789.png?updatedAt=1794677157431",
+        "alt": "スマートクレカ比較のメニュー",
+        "label": "06",
+        "title": "メニュー",
+        "device": "mobile"
+      },
+      {
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9794.png?updatedAt=1794677157343",
+        "alt": "スマートクレカ比較の記事",
+        "label": "07",
+        "title": "記事",
+        "device": "mobile"
       }
     ],
-    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand"],
     "period": "2026年",
     "overview": {
       "developmentType": "個人開発",
@@ -58,7 +77,7 @@
     "id": "hotel-search",
     "title": "ホテル検索アプリ",
     "summary": "楽天トラベルのAPIを利用し、キーワードや条件からホテルを検索できるWebアプリ。",
-    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/default-image.jpg?updatedAt=1793484882629",
+    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/hotel/batch_Layer%201.webp",
     "images": [
       {
         "src": "/images/works/smart-card-select/home.png",
@@ -99,6 +118,48 @@
       "site": "https://hotel-comparison-app.vercel.app/",
       "github": "https://github.com/mizumar/hotel-comparison-app"
     },
+    "highlights": [
+      "外部APIを利用したホテル検索",
+      "TanStack Queryによるデータ取得とキャッシュ管理",
+      "検索条件に応じたAPIリクエスト",
+      "ホテル詳細ページへの機能拡張"
+    ],
+    "hasDetail": true
+  },
+  {
+    "id": "hospital-tool",
+    "title": "医療機関向け受付管理ツール",
+    "summary": "紙で管理されていた受付業務をExcel上で扱えるツール。",
+    "thumbnail": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/excel/batch_Layer%204.webp",
+    "images": [
+      {
+        "src": "/images/works/smart-card-select/home.png",
+        "alt": "スマートクレカ比較のトップ画面",
+        "label": "01",
+        "title": "トップ画面"
+      },
+      {
+        "src": "/images/works/smart-card-select/diagnosis.png",
+        "alt": "スマートクレカ比較の診断画面",
+        "label": "02",
+        "title": "カード診断"
+      },
+      {
+        "src": "/images/works/smart-card-select/result.png",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "03",
+        "title": "比較結果"
+      },
+      {
+        "src": "/images/works/smart-card-select/result.png",
+        "alt": "スマートクレカ比較の比較結果画面",
+        "label": "05",
+        "title": "比較結果"
+      }
+    ],
+    "tech": ["ExcelVBA", "React", "TypeScript"],
+    "period": "2025年",
+    "links": {},
     "highlights": [
       "外部APIを利用したホテル検索",
       "TanStack Queryによるデータ取得とキャッシュ管理",
