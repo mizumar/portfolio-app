@@ -13,63 +13,85 @@
         "device": "mobile"
       },
       {
+        "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9798.png?updatedAt=1794753348650",
+        "alt": "スマートクレカ比較の詳細ページ",
+        "label": "02",
+        "title": "詳細ページ",
+        "device": "mobile"
+      },
+      {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9790.png?updatedAt=1794677157476",
         "alt": "スマートクレカ比較の診断画面",
-        "label": "02",
+        "label": "03",
         "title": "カード診断",
         "device": "mobile"
       },
       {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9791.png?updatedAt=1794677157247",
         "alt": "スマートクレカ比較の診断結果画面",
-        "label": "03",
+        "label": "04",
         "title": "カード診断結果",
         "device": "mobile"
       },
       {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9792.png?updatedAt=1794677157441",
         "alt": "スマートクレカ比較の比較結果画面",
-        "label": "04",
+        "label": "05",
         "title": "比較結果",
         "device": "mobile"
       },
       {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9793.png?updatedAt=1794677157370",
         "alt": "スマートクレカ比較のお気に入りフィルター機能",
-        "label": "05",
+        "label": "06",
         "title": "お気に入りフィルター",
         "device": "mobile"
       },
       {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9789.png?updatedAt=1794677157431",
         "alt": "スマートクレカ比較のメニュー",
-        "label": "06",
+        "label": "07",
         "title": "メニュー",
         "device": "mobile"
       },
       {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/credit/IMG_9794.png?updatedAt=1794677157343",
         "alt": "スマートクレカ比較の記事",
-        "label": "07",
-        "title": "記事",
+        "label": "08",
+        "title": "記事一覧",
         "device": "mobile"
       }
     ],
-    "tech": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Zustand"],
+    "tech": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "Jest",
+      "Playwright"
+    ],
     "period": "2026年",
     "overview": {
       "developmentType": "個人開発",
       "role": "企画・設計・実装・テスト",
-      "features": ["クレジットカード比較", "カード診断", "比較結果の表示"]
+      "features": [
+        "2枚のクレジットカード比較",
+        "利用額シミュレーション",
+        "カード診断",
+        "カード詳細・お気に入り"
+      ]
     },
     "links": {
       "site": "https://smart-card-select.vercel.app/",
       "github": "https://github.com/mizumar/smart-card-select"
     },
     "highlights": [
-      "2枚のクレジットカードを選択して比較できる機能",
-      "利用条件を考慮したカード診断機能",
-      "カード情報をJSONで管理し、比較ロジックと画面表示を分離"
+      "2枚のクレジットカードを選択して条件を比較できるUI",
+      "利用条件をもとにしたカード診断とおすすめ結果の表示",
+      "カード情報をJSONで管理し、データと比較ロジック・画面表示を分離",
+      "お気に入り登録やフィルターなど、比較後のカードを探しやすくする機能",
+      "Jest・Playwrightによるロジック・画面操作のテスト"
     ],
     "hasDetail": true
   },
@@ -176,14 +198,22 @@
       }
     ],
     "tech": ["Excel VBA", "CSV"],
-    "period": "2025年",
+    "period": "2025年1月",
+    "overview": {
+      "developmentType": "個人開発",
+      "role": "企画・設計・実装・テスト",
+      "features": [
+        "受付・患者情報の管理",
+        "新規患者の登録",
+        "受付データのCSV出力・検索"
+      ]
+    },
     "links": {},
     "highlights": [
-      "紙で行われていた受付業務をExcel上で管理",
-      "CSVによる患者マスタの取り込みと受付データの出力",
-      "受付番号・新患・検査などの情報を一元管理",
-      "日付・時刻の自動記録と年月単位でのデータ保存",
-      "バックアップデータの検索・参照と月次集計"
+      "既存患者と新規患者を分けたデータ管理",
+      "入力フォームによる新規患者登録",
+      "シート保護による誤操作への対策",
+      "受付データのCSV出力・検索"
     ],
     "hasDetail": true
   }

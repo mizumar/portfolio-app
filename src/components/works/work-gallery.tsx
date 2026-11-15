@@ -245,6 +245,7 @@ function ImageLightbox({
         className="relative w-[90vw] max-w-6xl"
         onClick={(event) => event.stopPropagation()}
       >
+        {/* 画像 */}
         <div className="relative aspect-video">
           <Image
             src={image.src}
@@ -253,6 +254,17 @@ function ImageLightbox({
             sizes="90vw"
             className="object-contain"
           />
+        </div>
+
+        {/* キャプション */}
+        <div className="mt-3 flex items-center justify-center gap-3">
+          <span className="font-dm text-[10px] tracking-wider text-[#806b59]">
+            {image.label}
+          </span>
+
+          <span className="h-3 w-px bg-[#665448]" />
+
+          <p className="text-xs text-[#b9a58e]">{image.title}</p>
         </div>
 
         {/* 閉じる */}
