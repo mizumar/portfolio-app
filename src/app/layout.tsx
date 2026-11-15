@@ -5,11 +5,43 @@ import { Header } from "@/src/components/layout/header";
 import { Footer } from "@/src/components/layout/footer";
 
 export const metadata: Metadata = {
-  title: "作品一覧",
-  description: "制作した作品を紹介するポートフォリオです。",
-  robots: {
-    index: false, // 検索結果に表示させない
-    follow: false, // ページ内のリンクを辿らせない（必要に応じて設定）
+  metadataBase: new URL("https://portfolio-app-nine-lilac.vercel.app"),
+
+  title: {
+    default: "mizumar | Portfolio",
+    template: "%s | mizumar",
+  },
+
+  description:
+    "mizumarのWebアプリケーション開発の経験や制作物、これまでの開発について紹介するポートフォリオです。",
+
+  authors: [{ name: "mizumar" }],
+  creator: "mizumar",
+
+  keywords: [
+    "mizumar",
+    "ポートフォリオ",
+    "Web開発",
+    "Next.js",
+    "React",
+    "TypeScript",
+  ],
+
+  openGraph: {
+    title: "mizumar | Portfolio",
+    description:
+      "Webアプリケーション開発の経験や制作物を紹介するポートフォリオ。",
+    url: "https://portfolio-app-nine-lilac.vercel.app",
+    siteName: "mizumar",
+    locale: "ja_JP",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "mizumar | Portfolio",
+    description:
+      "Webアプリケーション開発の経験や制作物を紹介するポートフォリオ。",
   },
 };
 

@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import worksData from "@/src/data/works.json";
 import type { Work } from "@/src/types/work";
 import { WorkCard } from "@/src/components/works/work-card";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "Webアプリケーション開発を中心とした制作実績と、これまでの開発経験を紹介しています。",
+};
 
 const works: Work[] = worksData;
 

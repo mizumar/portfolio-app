@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { notFound } from "next/navigation";
@@ -13,6 +14,39 @@ import { DevelopmentStory } from "./_components/development-story";
 import { WorkOverview } from "./_components/work-overview";
 
 const works: Work[] = worksData;
+
+type Props = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+
+  const work = works.find((item) => item.id === id);
+
+  if (!work) {
+    return {
+      title: "Work",
+    };
+  }
+
+  return {
+    title: work.title,
+    description: work.summary,
+    openGraph: {
+      title: work.title,
+      description: work.summary,
+      images: [
+        {
+          url: work.thumbnail,
+          alt: work.title,
+        },
+      ],
+    },
+  };
+}
 
 type WorkDetailPageProps = {
   params: Promise<{

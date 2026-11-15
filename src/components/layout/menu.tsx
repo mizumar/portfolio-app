@@ -61,7 +61,7 @@ export function Menu({ isOpen, onClose }: MenuProps) {
 
           <div className="mt-10 flex items-center gap-6">
             <a
-              href="#"
+              href="https://github.com/mizumar"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -70,7 +70,7 @@ export function Menu({ isOpen, onClose }: MenuProps) {
               <GithubLogoIcon size={24} weight="light" />
             </a>
 
-            <a
+            {/* <a
               href="#"
               target="_blank"
               rel="noopener noreferrer"
@@ -78,7 +78,7 @@ export function Menu({ isOpen, onClose }: MenuProps) {
               className="text-[#b9a58e] transition-colors hover:text-[#d8c3a5]"
             >
               <InstagramLogoIcon size={24} weight="light" />
-            </a>
+            </a> */}
           </div>
         </nav>
       </div>
