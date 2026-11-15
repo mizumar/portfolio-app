@@ -22,6 +22,8 @@ type GalleryMainImageProps = {
 type ImageLightboxProps = {
   image: WorkImage;
   onClose: () => void;
+  onPrevious: () => void;
+  onNext: () => void;
 };
 
 type GalleryArrowsProps = {
@@ -120,8 +122,13 @@ export function WorkGallery({ images }: WorkGalleryProps) {
       )}
 
       {/* 拡大表示 */}
-      {isZoomed && (
-        <ImageLightbox image={activeImage} onClose={() => setIsZoomed(false)} />
+      {isZoomed && !isMobile && (
+        <ImageLightbox
+          image={activeImage}
+          onClose={() => setIsZoomed(false)}
+          onPrevious={goToPrevious}
+          onNext={goToNext}
+        />
       )}
     </div>
   );
@@ -140,22 +147,15 @@ function GalleryMainImage({
       <div className="flex justify-center">
         <div className="relative w-full max-w-90">
           <Card className="overflow-hidden rounded-[2rem] border-[#665448] bg-[#46372f] p-2 shadow-none">
-            <button
-              type="button"
-              onClick={onZoom}
-              className="block w-full cursor-zoom-in"
-              aria-label="画像を拡大"
-            >
-              <div className="relative aspect-9/19 overflow-hidden rounded-[1.5rem] bg-[#29231f]">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 640px) 85vw, 360px"
-                  className="object-cover"
-                />
-              </div>
-            </button>
+            <div className="relative aspect-9/19 overflow-hidden rounded-[1.5rem] bg-[#29231f]">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 640px) 85vw, 360px"
+                className="object-cover"
+              />
+            </div>
           </Card>
 
           {hasMultipleImages && (
@@ -230,24 +230,32 @@ function GalleryArrows({
   );
 }
 
-function ImageLightbox({ image, onClose }: ImageLightboxProps) {
+function ImageLightbox({
+  image,
+  onClose,
+  onPrevious,
+  onNext,
+}: ImageLightboxProps) {
   return (
     <div
       className="fixed inset-0 z-100 flex items-center justify-center bg-[#29231f]/95 p-6"
       onClick={onClose}
     >
       <div
-        className="relative max-h-[90vh] max-w-[90vw]"
+        className="relative w-[90vw] max-w-6xl"
         onClick={(event) => event.stopPropagation()}
       >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          width={1600}
-          height={1200}
-          className="max-h-[90vh] max-w-[90vw] w-auto object-contain"
-        />
+        <div className="relative aspect-video">
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes="90vw"
+            className="object-contain"
+          />
+        </div>
 
+        {/* 閉じる */}
         <button
           type="button"
           onClick={onClose}
@@ -266,6 +274,46 @@ function ImageLightbox({ image, onClose }: ImageLightboxProps) {
           "
         >
           <XIcon size={22} weight="light" />
+        </button>
+
+        {/* 前へ */}
+        <button
+          type="button"
+          onClick={onPrevious}
+          aria-label="前の画像"
+          className="
+            absolute left-2 top-1/2
+            flex h-12 w-12 -translate-y-1/2
+            items-center justify-center
+            rounded-full
+            border border-[#665448]
+            bg-[#46372f]/90
+            text-[#d8c3a5]
+            transition-colors
+            hover:bg-[#594438]
+          "
+        >
+          <CaretLeftIcon size={22} weight="light" />
+        </button>
+
+        {/* 次へ */}
+        <button
+          type="button"
+          onClick={onNext}
+          aria-label="次の画像"
+          className="
+            absolute right-2 top-1/2
+            flex h-12 w-12 -translate-y-1/2
+            items-center justify-center
+            rounded-full
+            border border-[#665448]
+            bg-[#46372f]/90
+            text-[#d8c3a5]
+            transition-colors
+            hover:bg-[#594438]
+          "
+        >
+          <CaretRightIcon size={22} weight="light" />
         </button>
       </div>
     </div>
