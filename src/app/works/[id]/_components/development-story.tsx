@@ -7,7 +7,7 @@ type WorkDevelopmentStoryProps = {
 
 export function DevelopmentStory({ content }: WorkDevelopmentStoryProps) {
   return (
-    <section className="mt-14 border-t border-[#665448] pt-10 sm:mt-16 sm:pt-12">
+    <section className="mt-12  pt-6 sm:mt-12 sm:pt-6">
       <div className="mb-10">
         <p className="font-dm text-xs tracking-[0.3em] text-[#d8c3a5]">
           DEVELOPMENT STORY

@@ -129,7 +129,7 @@
   {
     "id": "hospital-tool",
     "title": "医療機関向け受付管理ツール",
-    "summary": "紙で管理されていた受付業務をExcel上で扱えるツール。",
+    "summary": "紙で管理されていた受付業務をExcel上で扱えるようにした、受付・集計管理ツール。",
     "thumbnail": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/excel/batch_Layer%204.webp",
     "images": [
       {
@@ -154,7 +154,7 @@
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/excel/03_output-csv-02.webp?updatedAt=1794728975369",
         "alt": "受付管理ツールのCSV出力確認モーダル",
         "label": "04",
-        "title": "CSV出力確認モーダル"
+        "title": "CSV出力確認"
       },
       {
         "src": "https://ik.imagekit.io/hnbg60mpt/01_portfolio/excel/04_delete_01.webp?updatedAt=1794728974755",
@@ -175,14 +175,15 @@
         "title": "削除結果_02"
       }
     ],
-    "tech": ["ExcelVBA", "CSV"],
+    "tech": ["Excel VBA", "CSV"],
     "period": "2025年",
     "links": {},
     "highlights": [
-      "外部APIを利用したホテル検索",
-      "TanStack Queryによるデータ取得とキャッシュ管理",
-      "検索条件に応じたAPIリクエスト",
-      "ホテル詳細ページへの機能拡張"
+      "紙で行われていた受付業務をExcel上で管理",
+      "CSVによる患者マスタの取り込みと受付データの出力",
+      "受付番号・新患・検査などの情報を一元管理",
+      "日付・時刻の自動記録と年月単位でのデータ保存",
+      "バックアップデータの検索・参照と月次集計"
     ],
     "hasDetail": true
   }
